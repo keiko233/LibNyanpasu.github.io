@@ -3,8 +3,15 @@ import { defineConfig } from 'vitepress'
 import Container from 'markdown-it-container'
 import FootNote from 'markdown-it-footnote'
 import Token from 'markdown-it/lib/token'
+import { fileURLToPath } from 'url'
 
 const currentYear = new Date().getFullYear()
+
+const aliasLists = [
+  // 'VPHome',
+  'Nav',
+  'Sidebar'
+]
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -132,7 +139,7 @@ export default defineConfig({
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: './images/logo.png', // TODO: change to {light: '', dark: ''}
+    logo: '/images/logo.png', // TODO: change to {light: '', dark: ''}
 
     socialLinks: [
       {
@@ -147,6 +154,29 @@ export default defineConfig({
     editLink: {
       pattern:
         'https://github.com/LibNyanpasu/LibNyanpasu.github.io/edit/main/:path'
+    }
+  },
+  vite: {
+    resolve: {
+      alias: (() => {
+        return aliasLists.map((alias) => {
+          return {
+            find: new RegExp(`^.*\\/VP${alias}\\.vue$`),
+            replacement: fileURLToPath(
+              new URL(`./theme/components/MDY${alias}.vue`, import.meta.url)
+            )
+          }
+        })
+      })()
+    }
+  },
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => {
+          return tag.toLowerCase().indexOf('md-') === 0
+        }
+      }
     }
   }
 })

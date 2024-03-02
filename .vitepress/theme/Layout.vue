@@ -2,6 +2,11 @@
 // https://vitepress.dev/guide/extending-default-theme#layout-slots
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import {
+  argbFromHex,
+  themeFromSourceColor,
+  applyTheme
+} from '@material/material-color-utilities'
 
 // 切换 夜间 / 日间 模式
 const { isDark } = useData()
@@ -40,6 +45,28 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
       pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`
     }
   )
+})
+
+const injectMDTheme = () => {
+  applyTheme(
+    themeFromSourceColor(argbFromHex('#2DACBE'), [
+      {
+        name: 'Default',
+        value: argbFromHex('#2DACBE'),
+        blend: true
+      }
+    ]),
+    { target: document.body, dark: isDark.value }
+  )
+}
+
+watch(
+  () => isDark.value,
+  () => injectMDTheme()
+)
+
+onBeforeMount(() => {
+  injectMDTheme()
 })
 </script>
 

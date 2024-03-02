@@ -8,6 +8,16 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BackToTop: typeof import('./../.vitepress/theme/components/BackToTop.vue')['default']
+    copy: typeof import('./../.vitepress/theme/components/MDYSidebarItem copy.vue')['default']
+    MDYContent: typeof import('./../.vitepress/theme/components/MDYContent.vue')['default']
+    MDYNav: typeof import('./../.vitepress/theme/components/MDYNav.vue')['default']
+    MDYNavBarTranslate: typeof import('./../.vitepress/theme/components/MDYNavBarTranslate.vue')['default']
+    MDYSidebar: typeof import('./../.vitepress/theme/components/MDYSidebar.vue')['default']
+    MDYSidebarItem: typeof import('./../.vitepress/theme/components/MDYSidebarItem.vue')['default']
     UnoCSSIndicator: typeof import('./../.vitepress/theme/components/UnoCSSIndicator.vue')['default']
+    VPNav: typeof import('./../.vitepress/theme/components/VPNav.vue')['default']
+    VPNavBarTranslate: typeof import('./../.vitepress/theme/components/VPNavBarTranslate.vue')['default']
+    VPSidebar: typeof import('./../.vitepress/theme/components/VPSidebar.vue')['default']
+    VPSidebarItem: typeof import('./../.vitepress/theme/components/VPSidebarItem.vue')['default']
   }
 }

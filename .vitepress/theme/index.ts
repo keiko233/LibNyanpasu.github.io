@@ -1,7 +1,7 @@
 // https://vitepress.dev/guide/custom-theme
 /// <reference types="vite/client" />
 
-import type { Theme } from 'vitepress'
+import { useData, type Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import { h } from 'vue'
 
@@ -11,6 +11,8 @@ import NotFound from './NotFound.vue'
 import './styles/main.scss'
 
 import 'virtual:uno.css'
+
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 const theme: Theme = {
   extends: DefaultTheme,
