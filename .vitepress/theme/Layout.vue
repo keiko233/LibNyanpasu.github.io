@@ -80,6 +80,10 @@ onBeforeMount(() => {
     <template #home-features-after>
       <ListReleases />
     </template>
+
+    <template #doc-top>
+      <v-btn>test</v-btn>
+    </template>
   </DefaultTheme.Layout>
 </template>
 

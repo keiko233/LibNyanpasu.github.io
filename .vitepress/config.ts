@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import vuetify from 'vite-plugin-vuetify'
 
 import Container from 'markdown-it-container'
 import FootNote from 'markdown-it-footnote'
@@ -171,5 +172,22 @@ export default defineConfig({
         'data-website-id': '9af35a41-8a82-4cde-84d2-11ebb2e85cdb'
       }
     ]
-  ]
+  ],
+  // vite: {
+  //   ssr: {
+  //     noExternal: [
+  //       '@inertiajs/server',
+  //       /\.css$/,
+  //       /\?vue&type=style/,
+  //       /^vuetify/,
+  //       'vuetify'
+  //     ]
+  //   }
+  // }
+  vite: {
+    plugins: [vuetify()],
+    ssr: {
+      noExternal: ['vuetify']
+    }
+  }
 })

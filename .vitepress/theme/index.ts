@@ -12,11 +12,24 @@ import './styles/main.scss'
 
 import 'virtual:uno.css'
 
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+
+const vuetify = createVuetify({
+  components,
+  directives,
+  ssr: true
+})
+
 const theme: Theme = {
   extends: DefaultTheme,
   Layout: () => h(Layout),
   NotFound,
-  enhanceApp: (_ctx) => {}
+  enhanceApp: ({ app }) => {
+    app.use(vuetify)
+  }
 } satisfies Theme
 
 export default theme

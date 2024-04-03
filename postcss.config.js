@@ -1,5 +1,9 @@
+import { postcssIsolateStyles } from 'vitepress'
+
 export default {
-  plugins: {
-    autoprefixer: {}
-  }
+  plugins: [
+    postcssIsolateStyles({
+      includeFiles: [/\.css$/]
+    })
+  ]
 }
